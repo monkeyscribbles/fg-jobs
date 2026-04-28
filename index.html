@@ -17,7 +17,6 @@
     --navy: #0D1B2A;
     --navy2: #152234;
     --navy3: #1E2F45;
-    --navy4: #253650;
     --text: #E8EDF2;
     --muted: #6B8099;
     --border: rgba(255,255,255,0.07);
@@ -40,9 +39,7 @@
   .header-actions { display: flex; gap: 8px; align-items: center; }
   button { font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; outline: none; }
   .btn-refresh { background: var(--navy3); color: var(--muted); border: 1px solid var(--border); padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; transition: all 0.2s; }
-  .btn-refresh:hover { color: var(--text); border-color: var(--muted); }
-  .btn-add { background: var(--orange); color: white; padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; transition: all 0.2s; border: none; }
-  .btn-add:hover { background: #e05400; }
+  .btn-add { background: var(--orange); color: white; padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; border: none; }
   .tab-nav { display: flex; }
   .tab-btn { flex: 1; padding: 10px; font-size: 13px; font-weight: 600; color: var(--muted); background: transparent; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
   .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
@@ -53,10 +50,9 @@
   .view { display: none; }
   .view.active { display: block; }
   .jobs-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
-  .job-card { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: grab; transition: all 0.15s; position: relative; overflow: hidden; user-select: none; }
+  .job-card { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: all 0.15s; position: relative; overflow: hidden; user-select: none; }
   .job-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 3px 0 0 3px; }
-  .job-card:active { cursor: grabbing; opacity: 0.85; transform: scale(0.99); }
-  .job-card.dragging { opacity: 0.4; }
+  .job-card.dragging { opacity: 0.4; cursor: grabbing; }
   .job-card.drag-over { border-color: var(--orange); background: var(--navy3); }
   .job-card.status-lead::before { background: var(--lead); }
   .job-card.status-soft::before { background: var(--soft); }
@@ -81,38 +77,32 @@
   .badge-status-bill { background: rgba(249,115,22,0.15); color: #FED7AA; border: 1px solid rgba(249,115,22,0.3); }
   .badge-status-paid { background: rgba(99,102,241,0.15); color: #C7D2FE; border: 1px solid rgba(99,102,241,0.3); }
   .badge-size { background: var(--navy3); color: var(--muted); border: 1px solid var(--border); }
-  .badge-size:hover { color: var(--text); }
   .badge-soft { background: rgba(139,92,246,0.1); color: #C4B5FD; border: 1px solid rgba(139,92,246,0.25); }
   .job-scope { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
   .job-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .job-next { font-size: 11px; color: var(--muted); font-style: italic; flex: 1; }
   .job-next.urgent { color: #FCA5A5; }
   .job-actions { display: flex; gap: 6px; }
-  .btn-icon { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 31px; height: 31px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; transition: all 0.15s; }
-  .btn-icon:hover { color: var(--text); border-color: var(--muted); }
+  .btn-icon { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 31px; height: 31px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 15px; cursor: pointer; transition: all 0.15s; }
   .btn-icon.danger:hover { color: #FCA5A5; border-color: #FCA5A5; }
   .phone-link { color: var(--orange); font-size: 11px; text-decoration: none; font-weight: 500; }
-  .phone-link:hover { text-decoration: underline; }
   .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
   .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
   .empty-state h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); }
-  .empty-state p { font-size: 13px; }
   .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 14px; }
 
   /* UPDATES */
-  .updates-view { padding: 16px; }
+  .updates-view { padding: 16px; max-width: 680px; margin: 0 auto; }
   .note-input-area { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 16px; }
   .note-input-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; display: block; }
-  .note-textarea { width: 100%; background: var(--navy3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; resize: none; min-height: 100px; transition: border-color 0.15s; line-height: 1.5; }
+  .note-textarea { width: 100%; background: var(--navy3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; resize: none; min-height: 100px; line-height: 1.5; }
   .note-textarea:focus { outline: none; border-color: var(--orange); }
   .note-textarea::placeholder { color: var(--muted); }
   .note-actions { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
-  .btn-mic { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
-  .btn-mic:hover { border-color: var(--orange); color: var(--orange); }
+  .btn-mic { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; flex-shrink: 0; }
   .btn-mic.recording { background: rgba(255,94,0,0.15); border-color: var(--orange); color: var(--orange); animation: pulse 1s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-  .btn-parse { flex: 1; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-parse:hover { background: #e05400; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+  .btn-parse { flex: 1; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
   .btn-parse:disabled { opacity: 0.5; cursor: not-allowed; }
   .timestamp-note { font-size: 11px; color: var(--muted); margin-top: 8px; font-style: italic; }
   .parse-results { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
@@ -127,12 +117,9 @@
   .result-type.ambiguous { color: #FCD34D; }
   .result-summary { font-size: 14px; color: var(--text); line-height: 1.4; margin-bottom: 12px; }
   .result-actions { display: flex; gap: 8px; }
-  .btn-approve { flex: 1; background: var(--complete); color: white; padding: 9px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-approve:hover { background: #0ea573; }
-  .btn-dismiss { background: var(--navy3); color: var(--muted); padding: 9px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-dismiss:hover { color: var(--text); }
-  .btn-approve-all { width: 100%; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; margin-bottom: 16px; }
-  .btn-approve-all:hover { background: #e05400; }
+  .btn-approve { flex: 1; background: var(--complete); color: white; padding: 9px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-dismiss { background: var(--navy3); color: var(--muted); padding: 9px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; }
+  .btn-approve-all { width: 100%; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; margin-bottom: 16px; }
   .parsing-indicator { text-align: center; padding: 30px; color: var(--muted); }
   .parsing-indicator .spin { font-size: 24px; animation: spin 1s linear infinite; display: inline-block; margin-bottom: 10px; }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -144,7 +131,7 @@
   .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--orange); margin-bottom: 20px; }
   .form-group { margin-bottom: 14px; }
   .form-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; display: block; }
-  .form-input, .form-select, .form-textarea { width: 100%; background: var(--navy3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s; }
+  .form-input, .form-select, .form-textarea { width: 100%; background: var(--navy3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; }
   .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--orange); }
   .form-textarea { resize: vertical; min-height: 80px; }
   .form-select option { background: var(--navy3); }
@@ -157,20 +144,16 @@
   .toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: left 0.2s; }
   .toggle.on::after { left: 22px; }
   .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .btn-save { flex: 1; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-save:hover { background: #e05400; }
-  .btn-cancel { background: var(--navy3); color: var(--muted); padding: 12px 20px; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .btn-cancel:hover { color: var(--text); }
+  .btn-save { flex: 1; background: var(--orange); color: white; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-cancel { background: var(--navy3); color: var(--muted); padding: 12px 20px; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; }
   .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--navy3); border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 8px; font-size: 13px; z-index: 300; transition: transform 0.3s; white-space: nowrap; }
   .toast.show { transform: translateX(-50%) translateY(0); }
   .toast.success { border-color: var(--complete); color: #6EE7B7; }
   .toast.error { border-color: #EF4444; color: #FCA5A5; }
   @media (min-width: 600px) {
     .jobs-list { max-width: 680px; margin: 0 auto; }
-    .summary-bar { justify-content: center; }
     .modal { border-radius: 16px; margin-bottom: 40px; }
     .modal-overlay { align-items: center; }
-    .updates-view { max-width: 680px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -202,7 +185,7 @@
   <div class="updates-view">
     <div class="note-input-area">
       <span class="note-input-label">What's happening?</span>
-      <textarea class="note-textarea" id="noteInput" placeholder="Speak or type... 'Called Shane back, he wants to schedule for next week' or 'New lead: Roger Harris at 123 Elm St, wants gutter estimate'"></textarea>
+      <textarea class="note-textarea" id="noteInput" placeholder="Speak or type... 'Called Shane back, he wants to go next week' or 'New lead: Roger Harris, 123 Elm St Graham, wants gutter estimate'"></textarea>
       <div class="note-actions">
         <button class="btn-mic" id="micBtn" onclick="toggleMic()">🎤</button>
         <button class="btn-parse" id="parseBtn" onclick="parseNote()">Parse & Review</button>
@@ -305,8 +288,8 @@
 const SUPABASE_URL = 'https://nclwjorfiqnxckvsaxau.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_ouSkRdsRBb5Wu5wACfvLtA_nYY8_VMR';
 
-const STATUSES = ['Lead - New', 'Soft Hold', 'Sold', 'Scheduled', 'In Progress', 'Complete', 'Bill', 'Paid'];
-const SIZES = ['', 'Quarter Day', 'Half Day', 'Full Day'];
+const STATUSES = ['Lead - New','Soft Hold','Sold','Scheduled','In Progress','Complete','Bill','Paid'];
+const SIZES = ['','Quarter Day','Half Day','Full Day'];
 
 let jobs = [];
 let editingId = null;
@@ -317,70 +300,75 @@ let isRecording = false;
 let pendingResults = [];
 
 function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach((b, i) => {
-    b.classList.toggle('active', (i === 0 && tab === 'jobs') || (i === 1 && tab === 'updates'));
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active',(i===0&&tab==='jobs')||(i===1&&tab==='updates'));
   });
-  document.getElementById('jobsView').classList.toggle('active', tab === 'jobs');
-  document.getElementById('updatesView').classList.toggle('active', tab === 'updates');
-  document.getElementById('jobsHeaderActions').style.display = tab === 'jobs' ? 'flex' : 'none';
-  document.getElementById('summaryBar').style.display = tab === 'jobs' ? 'flex' : 'none';
+  document.getElementById('jobsView').classList.toggle('active',tab==='jobs');
+  document.getElementById('updatesView').classList.toggle('active',tab==='updates');
+  document.getElementById('jobsHeaderActions').style.display = tab==='jobs'?'flex':'none';
+  document.getElementById('summaryBar').style.display = tab==='jobs'?'flex':'none';
 }
 
-async function api(method, path, body) {
+async function api(method,path,body) {
   const opts = {
     method,
     headers: {
       'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Authorization': 'Bearer '+SUPABASE_KEY,
       'Content-Type': 'application/json',
-      'Prefer': method === 'POST' ? 'return=representation' : 'return=minimal'
+      'Prefer': method==='POST'?'return=representation':'return=minimal'
     }
   };
   if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(SUPABASE_URL + '/rest/v1' + path, opts);
-  if (method === 'GET' || opts.headers['Prefer'] === 'return=representation') return res.json();
+  const res = await fetch(SUPABASE_URL+'/rest/v1'+path,opts);
+  if (method==='GET'||opts.headers['Prefer']==='return=representation') return res.json();
   return res;
 }
 
 async function loadJobs() {
   try {
-    const data = await api('GET', '/jobs?order=position.asc.nullslast,created_at.asc');
+    const data = await api('GET','/jobs?order=position.asc.nullslast,created_at.asc');
     jobs = data;
     renderJobs();
     renderSummary();
   } catch(e) {
-    document.getElementById('jobsList').innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><h3>Connection Error</h3><p>' + e.message + '</p></div>';
+    document.getElementById('jobsList').innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><h3>Connection Error</h3><p>'+e.message+'</p></div>';
   }
 }
 
 function statusClass(status) {
   if (!status) return 'lead';
   const s = status.toLowerCase();
+  if (s==='bill') return 'bill';
+  if (s==='paid') return 'paid';
   if (s.includes('soft')) return 'soft';
   if (s.includes('sold')) return 'sold';
   if (s.includes('scheduled')) return 'scheduled';
   if (s.includes('progress')) return 'inprogress';
   if (s.includes('complete')) return 'complete';
-  if (s === 'bill') return 'bill';
-  if (s === 'paid') return 'paid';
   return 'lead';
 }
 
 function statusColor(status) {
-  const map = { lead:'#3B82F6', soft:'#8B5CF6', sold:'#F59E0B', scheduled:'#06B6D4', inprogress:'#FF5E00', complete:'#10B981', bill:'#F97316', paid:'#6366F1' };
-  return map[statusClass(status)] || '#3B82F6';
+  const map = {lead:'#3B82F6',soft:'#8B5CF6',sold:'#F59E0B',scheduled:'#06B6D4',inprogress:'#FF5E00',complete:'#10B981',bill:'#F97316',paid:'#6366F1'};
+  return map[statusClass(status)]||'#3B82F6';
 }
 
 function renderSummary() {
   const counts = {};
-  STATUSES.forEach(s => counts[s] = 0);
-  jobs.forEach(j => { if (counts[j.status] !== undefined) counts[j.status]++; });
+  STATUSES.forEach(s => counts[s]=0);
+  jobs.forEach(j => { if (counts[j.status]!==undefined) counts[j.status]++; });
   document.getElementById('summaryBar').innerHTML = STATUSES.map(s => {
     const c = counts[s];
-    if (c === 0) return '';
+    if (!c) return '';
     const color = statusColor(s);
-    return '<div class="pill" style="background:' + color + '18;border-color:' + color + '30"><div class="pill-dot" style="background:' + color + '"></div><span style="color:' + color + '">' + s.replace(' - New','').replace(' - Paid','') + ' ' + c + '</span></div>';
+    return '<div class="pill" style="background:'+color+'18;border-color:'+color+'30"><div class="pill-dot" style="background:'+color+'"></div><span style="color:'+color+'">'+s+' '+c+'</span></div>';
   }).join('');
+}
+
+function handleCardClick(e,id) {
+  if (e.target.closest('.badge')||e.target.closest('.btn-icon')||e.target.closest('.phone-link')) return;
+  openModal(id);
 }
 
 function renderJobs() {
@@ -389,115 +377,103 @@ function renderJobs() {
     list.innerHTML = '<div class="empty-state"><div class="icon">🏠</div><h3>No jobs yet</h3><p>Tap + Add to get started</p></div>';
     return;
   }
-  list.innerHTML = jobs.map((j, i) => {
+  list.innerHTML = jobs.map((j,i) => {
     const sc = statusClass(j.status);
-    const isUrgent = j.next_action && j.next_action.toLowerCase().includes('day');
-    return '<div class="job-card status-' + sc + '" draggable="true" data-id="' + j.id + '" data-idx="' + i + '" ondragstart="dragStart(event,' + i + ')" ondragover="dragOver(event)" ondrop="dragDrop(event,' + i + ')" ondragend="dragEnd(event)" onclick="handleCardClick(event,\'' + j.id + '\')">'' +
-      '<div class="job-top"><div><div class="job-customer">' + (j.customer || 'Unknown') + '</div><div class="job-date">' + (j.address || '') + (j.date ? ' · ' + j.date : '') + '</div></div>' +
-      '<div class="job-badges"><div class="badge badge-status-' + sc + '" onclick="cycleStatus(\'' + j.id + '\',\'' + j.status + '\')">' + (j.status || 'Lead') + '</div>' +
-      (j.size ? '<div class="badge badge-size" onclick="cycleSize(\'' + j.id + '\',\'' + j.size + '\')">' + j.size + '</div>' : '<div class="badge badge-size" onclick="cycleSize(\'' + j.id + '\',\'\')">+ Size</div>') +
-      (j.soft_hold ? '<div class="badge badge-soft">Soft Hold</div>' : '') + '</div></div>' +
-      (j.scope ? '<div class="job-scope">' + j.scope + '</div>' : '') +
-      '<div class="job-footer"><div>' +
-      (j.phone ? '<a class="phone-link" href="tel:' + j.phone + '">📞 ' + j.phone + '</a>' : '') +
-      (j.next_action ? '<div class="job-next' + (isUrgent ? ' urgent' : '') + '">→ ' + j.next_action + '</div>' : '') +
-      (j.follow_up_date ? '<div class="job-next">📅 Follow up: ' + j.follow_up_date + '</div>' : '') +
-      '</div><div class="job-actions"><div class="btn-icon" onclick="openModal(\'' + j.id + '\')">✏️</div><div class="btn-icon danger" onclick="deleteJob(\'' + j.id + '\')">🗑</div></div></div></div>';
+    const isUrgent = j.next_action&&j.next_action.toLowerCase().includes('day');
+    return '<div class="job-card status-'+sc+'" draggable="true" data-id="'+j.id+'" data-idx="'+i+'"'+
+      ' ondragstart="dragStart(event,'+i+')" ondragover="dragOver(event)" ondrop="dragDrop(event,'+i+')" ondragend="dragEnd(event)"'+
+      ' onclick="handleCardClick(event,\''+j.id+'\')">'+
+      '<div class="job-top"><div>'+
+      '<div class="job-customer">'+(j.customer||'Unknown')+'</div>'+
+      '<div class="job-date">'+(j.address||'')+(j.date?' · '+j.date:'')+'</div>'+
+      '</div><div class="job-badges">'+
+      '<div class="badge badge-status-'+sc+'" onclick="cycleStatus(\''+j.id+'\',\''+j.status+'\')">'+(j.status||'Lead')+'</div>'+
+      (j.size?'<div class="badge badge-size" onclick="cycleSize(\''+j.id+'\',\''+j.size+'\')">'+j.size+'</div>':
+               '<div class="badge badge-size" onclick="cycleSize(\''+j.id+'\',\'\')">+ Time</div>')+
+      (j.soft_hold?'<div class="badge badge-soft">Soft Hold</div>':'')+
+      '</div></div>'+
+      (j.scope?'<div class="job-scope">'+j.scope+'</div>':'')+
+      '<div class="job-footer"><div>'+
+      (j.phone?'<a class="phone-link" href="tel:'+j.phone+'">📞 '+j.phone+'</a>':'')+
+      (j.next_action?'<div class="job-next'+(isUrgent?' urgent':'')+'">→ '+j.next_action+'</div>':'')+
+      (j.follow_up_date?'<div class="job-next">📅 Follow up: '+j.follow_up_date+'</div>':'')+
+      '</div><div class="job-actions">'+
+      '<div class="btn-icon danger" onclick="deleteJob(\''+j.id+'\')">🗑</div>'+
+      '</div></div></div>';
   }).join('');
 }
 
 function toggleMic() {
-  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    showToast('Voice not supported in this browser', 'error');
-    return;
-  }
+  if (!('webkitSpeechRecognition' in window)&&!('SpeechRecognition' in window)) { showToast('Voice not supported','error'); return; }
   if (isRecording) { recognition.stop(); return; }
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const SR = window.SpeechRecognition||window.webkitSpeechRecognition;
   recognition = new SR();
   recognition.continuous = false;
   recognition.interimResults = false;
   recognition.lang = 'en-US';
-  recognition.onstart = () => { isRecording = true; document.getElementById('micBtn').classList.add('recording'); document.getElementById('micBtn').textContent = '⏹'; };
-  recognition.onresult = (e) => {
-    const transcript = e.results[0][0].transcript;
-    const textarea = document.getElementById('noteInput');
-    textarea.value = (textarea.value ? textarea.value + ' ' : '') + transcript;
-  };
-  recognition.onerror = (e) => { showToast('Voice error: ' + e.error, 'error'); };
-  recognition.onend = () => { isRecording = false; document.getElementById('micBtn').classList.remove('recording'); document.getElementById('micBtn').textContent = '🎤'; };
+  recognition.onstart = () => { isRecording=true; document.getElementById('micBtn').classList.add('recording'); document.getElementById('micBtn').textContent='⏹'; };
+  recognition.onresult = (e) => { const t=e.results[0][0].transcript; const ta=document.getElementById('noteInput'); ta.value=(ta.value?ta.value+' ':'')+t; };
+  recognition.onerror = (e) => { showToast('Voice error: '+e.error,'error'); };
+  recognition.onend = () => { isRecording=false; document.getElementById('micBtn').classList.remove('recording'); document.getElementById('micBtn').textContent='🎤'; };
   recognition.start();
 }
 
 async function parseNote() {
   const note = document.getElementById('noteInput').value.trim();
-  if (!note) { showToast('Enter a note first', 'error'); return; }
-
-  const timestamp = new Date().toLocaleString('en-US', { month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
-  document.getElementById('timestampNote').textContent = 'Logged: ' + timestamp;
-
+  if (!note) { showToast('Enter a note first','error'); return; }
+  const timestamp = new Date().toLocaleString('en-US',{month:'numeric',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+  document.getElementById('timestampNote').textContent = 'Logged: '+timestamp;
   const parseBtn = document.getElementById('parseBtn');
   parseBtn.disabled = true;
   parseBtn.textContent = 'Parsing...';
+  document.getElementById('parseResults').innerHTML = '<div class="parsing-indicator"><div class="spin">⚙️</div><div>Analyzing...</div></div>';
 
-  document.getElementById('parseResults').innerHTML = '<div class="parsing-indicator"><div class="spin">⚙️</div><div>Analyzing your note...</div></div>';
+  try { await api('POST','/notes_log',{raw_note:note,timestamp:new Date().toISOString()}); } catch(e) {}
 
-  try {
-    await api('POST', '/notes_log', { raw_note: note, timestamp: new Date().toISOString() });
-  } catch(e) { console.log('Log save failed', e); }
-
-  const jobContext = jobs.map(j => 'ID:' + j.id + ' | ' + j.customer + ' | ' + (j.address || '') + ' | Status:' + j.status).join('\n');
-
-  const prompt = 'You are a job tracker assistant for Freedom Gutters, a gutter installation company.\n\nCurrent jobs:\n' + (jobContext || 'No jobs yet') + '\n\nUser note (timestamped ' + timestamp + '):\n"' + note + '"\n\nReturn ONLY a JSON array of actions:\n1. Match update: {"type":"match","job_id":"<id>","summary":"what changed","changes":{"status":"...","next_action":"...","size":"...","price":"...","notes":"..."}}\n2. New lead: {"type":"new_lead","summary":"description","data":{"customer":"...","address":"...","phone":"...","scope":"...","status":"Lead - New","size":"...","next_action":"..."}}\n3. Unmatched: {"type":"unmatched","summary":"could not match"}\n\nStatus values must be exactly: "Lead - New", "Soft Hold", "Sold", "Scheduled", "In Progress", "Complete - Paid"\nSize values: "Quarter Day", "Half Day", "Full Day"\nReturn ONLY the JSON array, no other text.';
+  const jobContext = jobs.map(j => 'ID:'+j.id+' | '+j.customer+' | '+(j.address||'')+' | Status:'+j.status).join('\n');
+  const prompt = 'You are a job tracker for Freedom Gutters gutter installation.\n\nCurrent jobs:\n'+(jobContext||'None')+'\n\nUser note ('+timestamp+'):\n"'+note+'"\n\nReturn ONLY a JSON array. Each item must be one of:\n{"type":"match","job_id":"<id>","summary":"what changed","changes":{"status":"...","next_action":"...","size":"...","price":"..."}}\n{"type":"new_lead","summary":"description","data":{"customer":"...","address":"...","phone":"...","scope":"...","status":"Lead - New","size":"...","next_action":"..."}}\n{"type":"unmatched","summary":"could not match"}\n\nValid status values: "Lead - New","Soft Hold","Sold","Scheduled","In Progress","Complete","Bill","Paid"\nValid size values: "Quarter Day","Half Day","Full Day"\nReturn ONLY the JSON array, no other text.';
 
   try {
-    const response = await fetch('/api/claude-proxy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
+    const response = await fetch('/api/claude-proxy',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,messages:[{role:'user',content:prompt}]})
     });
-
     const data = await response.json();
-    if (!data.content || !data.content[0]) throw new Error("API error: " + JSON.stringify(data));
+    if (!data.content||!data.content[0]) throw new Error('API error: '+JSON.stringify(data));
     let text = data.content[0].text.trim();
-    // Strip markdown code fences if present
-    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
-    // Extract JSON array
+    text = text.replace(/```json/g,'').replace(/```/g,'').trim();
     const start = text.indexOf('[');
     const end = text.lastIndexOf(']');
-    if (start === -1 || end === -1) throw new Error("No JSON array in response: " + text.substring(0, 150));
-    const actions = JSON.parse(text.substring(start, end + 1));
+    if (start===-1||end===-1) throw new Error('No JSON array in: '+text.substring(0,100));
+    const actions = JSON.parse(text.substring(start,end+1));
     pendingResults = actions;
     renderParseResults(actions);
-
   } catch(e) {
-    document.getElementById('parseResults').innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><h3>Parse failed</h3><p>' + e.message + '</p></div>';
+    document.getElementById('parseResults').innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><h3>Parse failed</h3><p>'+e.message+'</p></div>';
   }
-
   parseBtn.disabled = false;
   parseBtn.textContent = 'Parse & Review';
 }
 
 function renderParseResults(actions) {
-  if (!actions.length) {
-    document.getElementById('parseResults').innerHTML = '<div class="empty-state"><div class="icon">🤷</div><h3>Nothing to parse</h3><p>Try adding more detail</p></div>';
-    return;
-  }
-  const hasMultiple = actions.filter(a => a.type !== 'unmatched').length > 1;
+  if (!actions.length) { document.getElementById('parseResults').innerHTML = '<div class="empty-state"><div class="icon">🤷</div><h3>Nothing to parse</h3></div>'; return; }
+  const hasMultiple = actions.filter(a=>a.type!=='unmatched').length>1;
   let html = '<div class="parse-results-label">Review & Approve</div>';
   if (hasMultiple) html += '<button class="btn-approve-all" onclick="approveAll()">✅ Approve All</button>';
   html += '<div class="parse-results">';
-  actions.forEach((action, i) => {
-    let typeLabel = '', typeClass = '', cardClass = '';
-    if (action.type === 'match') { typeLabel = '✓ Match Found'; typeClass = 'match'; cardClass = 'match'; }
-    else if (action.type === 'new_lead') { typeLabel = '+ New Lead'; typeClass = 'new-lead'; cardClass = 'new-lead'; }
-    else { typeLabel = '? Unmatched'; typeClass = 'ambiguous'; cardClass = 'ambiguous'; }
-    html += '<div class="result-card ' + cardClass + '" id="result-' + i + '"><div class="result-type ' + typeClass + '">' + typeLabel + '</div><div class="result-summary">' + action.summary + '</div><div class="result-actions">' +
-      (action.type !== 'unmatched' ? '<button class="btn-approve" onclick="approveAction(' + i + ')">Approve</button>' : '') +
-      '<button class="btn-dismiss" onclick="dismissAction(' + i + ')">Dismiss</button></div></div>';
+  actions.forEach((action,i) => {
+    let typeLabel='',typeClass='',cardClass='';
+    if (action.type==='match'){typeLabel='✓ Match Found';typeClass='match';cardClass='match';}
+    else if (action.type==='new_lead'){typeLabel='+ New Lead';typeClass='new-lead';cardClass='new-lead';}
+    else {typeLabel='? Unmatched';typeClass='ambiguous';cardClass='ambiguous';}
+    html += '<div class="result-card '+cardClass+'" id="result-'+i+'">'+
+      '<div class="result-type '+typeClass+'">'+typeLabel+'</div>'+
+      '<div class="result-summary">'+action.summary+'</div>'+
+      '<div class="result-actions">'+
+      (action.type!=='unmatched'?'<button class="btn-approve" onclick="approveAction('+i+')">Approve</button>':'')+
+      '<button class="btn-dismiss" onclick="dismissAction('+i+')">Dismiss</button>'+
+      '</div></div>';
   });
   html += '</div>';
   document.getElementById('parseResults').innerHTML = html;
@@ -507,141 +483,135 @@ async function approveAction(idx) {
   const action = pendingResults[idx];
   if (!action) return;
   try {
-    if (action.type === 'match' && action.job_id && action.changes) {
-      await api('PATCH', '/jobs?id=eq.' + action.job_id, action.changes);
-      const job = jobs.find(j => j.id === action.job_id);
-      if (job) Object.assign(job, action.changes);
-      showToast('Job updated ✓', 'success');
-    } else if (action.type === 'new_lead' && action.data) {
-      action.data.position = jobs.length + 1;
-      const result = await api('POST', '/jobs', action.data);
-      if (Array.isArray(result) && result[0]) jobs.push(result[0]);
-      showToast('New lead added ✓', 'success');
+    if (action.type==='match'&&action.job_id&&action.changes) {
+      await api('PATCH','/jobs?id=eq.'+action.job_id,action.changes);
+      const job = jobs.find(j=>j.id===action.job_id);
+      if (job) Object.assign(job,action.changes);
+      showToast('Job updated ✓','success');
+    } else if (action.type==='new_lead'&&action.data) {
+      action.data.position = jobs.length+1;
+      const result = await api('POST','/jobs',action.data);
+      if (Array.isArray(result)&&result[0]) jobs.push(result[0]);
+      showToast('New lead added ✓','success');
     }
     pendingResults[idx] = null;
-    document.getElementById('result-' + idx).style.opacity = '0.4';
-    document.getElementById('result-' + idx).style.pointerEvents = 'none';
+    document.getElementById('result-'+idx).style.opacity='0.4';
+    document.getElementById('result-'+idx).style.pointerEvents='none';
     renderSummary();
-  } catch(e) { showToast('Error: ' + e.message, 'error'); }
+  } catch(e) { showToast('Error: '+e.message,'error'); }
 }
 
 async function approveAll() {
-  for (let i = 0; i < pendingResults.length; i++) {
-    if (pendingResults[i] && pendingResults[i].type !== 'unmatched') await approveAction(i);
+  for (let i=0;i<pendingResults.length;i++) {
+    if (pendingResults[i]&&pendingResults[i].type!=='unmatched') await approveAction(i);
   }
-  showToast('All approved ✓', 'success');
+  showToast('All approved ✓','success');
 }
 
 function dismissAction(idx) {
-  pendingResults[idx] = null;
-  document.getElementById('result-' + idx).style.opacity = '0.3';
-  document.getElementById('result-' + idx).style.pointerEvents = 'none';
+  pendingResults[idx]=null;
+  document.getElementById('result-'+idx).style.opacity='0.3';
+  document.getElementById('result-'+idx).style.pointerEvents='none';
 }
 
-async function cycleStatus(id, current) {
+async function cycleStatus(id,current) {
   const idx = STATUSES.indexOf(current);
-  const next = STATUSES[(idx + 1) % STATUSES.length];
-  await api('PATCH', '/jobs?id=eq.' + id, { status: next });
-  const job = jobs.find(j => j.id === id);
-  if (job) job.status = next;
+  const next = STATUSES[(idx+1)%STATUSES.length];
+  await api('PATCH','/jobs?id=eq.'+id,{status:next});
+  const job = jobs.find(j=>j.id===id);
+  if (job) job.status=next;
   renderJobs(); renderSummary();
-  showToast('→ ' + next, 'success');
+  showToast('→ '+next,'success');
 }
 
-async function cycleSize(id, current) {
+async function cycleSize(id,current) {
   const idx = SIZES.indexOf(current);
-  const next = SIZES[(idx + 1) % SIZES.length];
-  await api('PATCH', '/jobs?id=eq.' + id, { size: next });
-  const job = jobs.find(j => j.id === id);
-  if (job) job.size = next;
+  const next = SIZES[(idx+1)%SIZES.length];
+  await api('PATCH','/jobs?id=eq.'+id,{size:next});
+  const job = jobs.find(j=>j.id===id);
+  if (job) job.size=next;
   renderJobs();
-  showToast(next ? 'Size: ' + next : 'Size cleared', 'success');
+  showToast(next?'Time: '+next:'Time cleared','success');
 }
 
 async function deleteJob(id) {
   if (!confirm('Delete this job?')) return;
-  await api('DELETE', '/jobs?id=eq.' + id);
-  jobs = jobs.filter(j => j.id !== id);
+  await api('DELETE','/jobs?id=eq.'+id);
+  jobs = jobs.filter(j=>j.id!==id);
   renderJobs(); renderSummary();
   showToast('Job deleted');
 }
 
-function handleCardClick(e, id) {
-  // Don't open edit if clicking badge, trash, or phone link
-  if (e.target.closest('.badge') || e.target.closest('.btn-icon') || e.target.closest('.phone-link')) return;
-  openModal(id);
-}
-
-function dragStart(e, idx) { dragSrcIdx = idx; e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
-function dragOver(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; document.querySelectorAll('.job-card').forEach(c => c.classList.remove('drag-over')); e.currentTarget.classList.add('drag-over'); }
-async function dragDrop(e, toIdx) {
+function dragStart(e,idx) { dragSrcIdx=idx; e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; }
+function dragOver(e) { e.preventDefault(); document.querySelectorAll('.job-card').forEach(c=>c.classList.remove('drag-over')); e.currentTarget.classList.add('drag-over'); }
+async function dragDrop(e,toIdx) {
   e.preventDefault();
-  if (dragSrcIdx === null || dragSrcIdx === toIdx) return;
-  const moved = jobs.splice(dragSrcIdx, 1)[0];
-  jobs.splice(toIdx, 0, moved);
-  jobs.forEach((j, i) => j.position = i + 1);
+  if (dragSrcIdx===null||dragSrcIdx===toIdx) return;
+  const moved = jobs.splice(dragSrcIdx,1)[0];
+  jobs.splice(toIdx,0,moved);
+  jobs.forEach((j,i)=>j.position=i+1);
   renderJobs(); renderSummary();
-  await Promise.all(jobs.map((j, i) => api('PATCH', '/jobs?id=eq.' + j.id, { position: i + 1 })));
+  await Promise.all(jobs.map((j,i)=>api('PATCH','/jobs?id=eq.'+j.id,{position:i+1})));
 }
-function dragEnd(e) { dragSrcIdx = null; document.querySelectorAll('.job-card').forEach(c => { c.classList.remove('dragging'); c.classList.remove('drag-over'); }); }
+function dragEnd(e) { dragSrcIdx=null; document.querySelectorAll('.job-card').forEach(c=>{c.classList.remove('dragging');c.classList.remove('drag-over');}); }
 
 function openModal(id) {
-  editingId = id || null;
+  editingId = id||null;
   softHoldValue = false;
-  document.getElementById('modalTitle').textContent = id ? 'EDIT JOB' : 'NEW JOB';
-  ['date','phone','customer','address','scope','price','size','status','confidence','follow_up_date','next_action'].forEach(f => { const el = document.getElementById('f_' + f); if (el) el.value = ''; });
-  document.getElementById('f_status').value = 'Lead - New';
+  document.getElementById('modalTitle').textContent = id?'EDIT JOB':'NEW JOB';
+  ['date','phone','customer','address','scope','price','size','status','confidence','follow_up_date','next_action'].forEach(f=>{const el=document.getElementById('f_'+f);if(el)el.value='';});
+  document.getElementById('f_status').value='Lead - New';
   document.getElementById('f_soft_hold_toggle').classList.remove('on');
   if (id) {
-    const j = jobs.find(j => j.id === id);
+    const j = jobs.find(j=>j.id===id);
     if (j) {
-      ['date','phone','customer','address','scope','price','size','status','confidence','follow_up_date','next_action'].forEach(f => { const el = document.getElementById('f_' + f); if (el && j[f] != null) el.value = j[f]; });
-      softHoldValue = j.soft_hold || false;
+      ['date','phone','customer','address','scope','price','size','status','confidence','follow_up_date','next_action'].forEach(f=>{const el=document.getElementById('f_'+f);if(el&&j[f]!=null)el.value=j[f];});
+      softHoldValue=j.soft_hold||false;
       if (softHoldValue) document.getElementById('f_soft_hold_toggle').classList.add('on');
     }
   }
   document.getElementById('modalOverlay').classList.add('open');
 }
 
-function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); editingId = null; }
-function handleOverlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-function toggleSoftHold() { softHoldValue = !softHoldValue; document.getElementById('f_soft_hold_toggle').classList.toggle('on', softHoldValue); }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); editingId=null; }
+function handleOverlayClick(e) { if (e.target===document.getElementById('modalOverlay')) closeModal(); }
+function toggleSoftHold() { softHoldValue=!softHoldValue; document.getElementById('f_soft_hold_toggle').classList.toggle('on',softHoldValue); }
 
 async function saveJob() {
   const data = {
-    customer: document.getElementById('f_customer').value.trim(),
-    date: document.getElementById('f_date').value.trim(),
-    phone: document.getElementById('f_phone').value.trim(),
-    address: document.getElementById('f_address').value.trim(),
-    scope: document.getElementById('f_scope').value.trim(),
-    price: document.getElementById('f_price').value.trim(),
-    size: document.getElementById('f_size').value,
-    status: document.getElementById('f_status').value,
-    confidence: document.getElementById('f_confidence').value,
-    follow_up_date: document.getElementById('f_follow_up_date').value.trim(),
-    next_action: document.getElementById('f_next_action').value.trim(),
-    soft_hold: softHoldValue
+    customer:document.getElementById('f_customer').value.trim(),
+    date:document.getElementById('f_date').value.trim(),
+    phone:document.getElementById('f_phone').value.trim(),
+    address:document.getElementById('f_address').value.trim(),
+    scope:document.getElementById('f_scope').value.trim(),
+    price:document.getElementById('f_price').value.trim(),
+    size:document.getElementById('f_size').value,
+    status:document.getElementById('f_status').value,
+    confidence:document.getElementById('f_confidence').value,
+    follow_up_date:document.getElementById('f_follow_up_date').value.trim(),
+    next_action:document.getElementById('f_next_action').value.trim(),
+    soft_hold:softHoldValue
   };
-  if (!data.customer) { showToast('Customer name required', 'error'); return; }
+  if (!data.customer) { showToast('Customer name required','error'); return; }
   if (editingId) {
-    await api('PATCH', '/jobs?id=eq.' + editingId, data);
-    const idx = jobs.findIndex(j => j.id === editingId);
-    if (idx !== -1) jobs[idx] = Object.assign({}, jobs[idx], data);
-    showToast('Job updated', 'success');
+    await api('PATCH','/jobs?id=eq.'+editingId,data);
+    const idx = jobs.findIndex(j=>j.id===editingId);
+    if (idx!==-1) jobs[idx]=Object.assign({},jobs[idx],data);
+    showToast('Job updated','success');
   } else {
-    data.position = jobs.length + 1;
-    const result = await api('POST', '/jobs', data);
-    if (Array.isArray(result) && result[0]) jobs.push(result[0]);
-    showToast('Job added', 'success');
+    data.position = jobs.length+1;
+    const result = await api('POST','/jobs',data);
+    if (Array.isArray(result)&&result[0]) jobs.push(result[0]);
+    showToast('Job added','success');
   }
   closeModal(); renderJobs(); renderSummary();
 }
 
-function showToast(msg, type) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast ' + (type || '') + ' show';
-  setTimeout(() => t.classList.remove('show'), 2500);
+function showToast(msg,type) {
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast '+(type||'')+' show';
+  setTimeout(()=>t.classList.remove('show'),2500);
 }
 
 loadJobs();
