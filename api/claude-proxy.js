@@ -1,6 +1,6 @@
-exports.handler = async function(event) {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
@@ -11,16 +11,13 @@ exports.handler = async function(event) {
         'x-api-key': process.env.CLAUDE_API_KEY,
         'anthropic-version': '2023-06-01'
       },
-      body: event.body
+      body: JSON.stringify(req.body)
     });
 
     const data = await response.json();
+    return res.status(200).json(data);
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify(data)
-    };
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
