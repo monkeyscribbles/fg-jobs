@@ -27,6 +27,8 @@
     --scheduled: #06B6D4;
     --inprogress: #FF5E00;
     --complete: #10B981;
+    --bill: #F97316;
+    --paid: #6366F1;
     --radius: 10px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,6 +64,8 @@
   .job-card.status-scheduled::before { background: var(--scheduled); }
   .job-card.status-inprogress::before { background: var(--inprogress); }
   .job-card.status-complete::before { background: var(--complete); }
+  .job-card.status-bill::before { background: var(--bill); }
+  .job-card.status-paid::before { background: var(--paid); }
   .job-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
   .job-customer { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.2; }
   .job-date { font-size: 11px; color: var(--muted); margin-top: 2px; }
@@ -74,6 +78,8 @@
   .badge-status-scheduled { background: rgba(6,182,212,0.15); color: #67E8F9; border: 1px solid rgba(6,182,212,0.3); }
   .badge-status-inprogress { background: rgba(255,94,0,0.15); color: #FF9A5C; border: 1px solid rgba(255,94,0,0.3); }
   .badge-status-complete { background: rgba(16,185,129,0.15); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.3); }
+  .badge-status-bill { background: rgba(249,115,22,0.15); color: #FED7AA; border: 1px solid rgba(249,115,22,0.3); }
+  .badge-status-paid { background: rgba(99,102,241,0.15); color: #C7D2FE; border: 1px solid rgba(99,102,241,0.3); }
   .badge-size { background: var(--navy3); color: var(--muted); border: 1px solid var(--border); }
   .badge-size:hover { color: var(--text); }
   .badge-soft { background: rgba(139,92,246,0.1); color: #C4B5FD; border: 1px solid rgba(139,92,246,0.25); }
@@ -82,7 +88,7 @@
   .job-next { font-size: 11px; color: var(--muted); font-style: italic; flex: 1; }
   .job-next.urgent { color: #FCA5A5; }
   .job-actions { display: flex; gap: 6px; }
-  .btn-icon { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; transition: all 0.15s; }
+  .btn-icon { background: var(--navy3); border: 1px solid var(--border); color: var(--muted); width: 31px; height: 31px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; transition: all 0.15s; }
   .btn-icon:hover { color: var(--text); border-color: var(--muted); }
   .btn-icon.danger:hover { color: #FCA5A5; border-color: #FCA5A5; }
   .phone-link { color: var(--orange); font-size: 11px; text-decoration: none; font-weight: 500; }
@@ -238,9 +244,9 @@
         <input class="form-input" id="f_price" placeholder="$0" />
       </div>
       <div class="form-group">
-        <label class="form-label">Size</label>
+        <label class="form-label">Time Slot</label>
         <select class="form-select" id="f_size">
-          <option value="">Unknown</option>
+          <option value="">Unset</option>
           <option value="Quarter Day">Quarter Day</option>
           <option value="Half Day">Half Day</option>
           <option value="Full Day">Full Day</option>
@@ -256,7 +262,9 @@
           <option value="Sold">Sold</option>
           <option value="Scheduled">Scheduled</option>
           <option value="In Progress">In Progress</option>
-          <option value="Complete - Paid">Complete - Paid</option>
+          <option value="Complete">Complete</option>
+          <option value="Bill">Bill</option>
+          <option value="Paid">Paid</option>
         </select>
       </div>
       <div class="form-group">
@@ -297,7 +305,7 @@
 const SUPABASE_URL = 'https://nclwjorfiqnxckvsaxau.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_ouSkRdsRBb5Wu5wACfvLtA_nYY8_VMR';
 
-const STATUSES = ['Lead - New', 'Soft Hold', 'Sold', 'Scheduled', 'In Progress', 'Complete - Paid'];
+const STATUSES = ['Lead - New', 'Soft Hold', 'Sold', 'Scheduled', 'In Progress', 'Complete', 'Bill', 'Paid'];
 const SIZES = ['', 'Quarter Day', 'Half Day', 'Full Day'];
 
 let jobs = [];
@@ -353,11 +361,13 @@ function statusClass(status) {
   if (s.includes('scheduled')) return 'scheduled';
   if (s.includes('progress')) return 'inprogress';
   if (s.includes('complete')) return 'complete';
+  if (s === 'bill') return 'bill';
+  if (s === 'paid') return 'paid';
   return 'lead';
 }
 
 function statusColor(status) {
-  const map = { lead:'#3B82F6', soft:'#8B5CF6', sold:'#F59E0B', scheduled:'#06B6D4', inprogress:'#FF5E00', complete:'#10B981' };
+  const map = { lead:'#3B82F6', soft:'#8B5CF6', sold:'#F59E0B', scheduled:'#06B6D4', inprogress:'#FF5E00', complete:'#10B981', bill:'#F97316', paid:'#6366F1' };
   return map[statusClass(status)] || '#3B82F6';
 }
 
@@ -382,7 +392,7 @@ function renderJobs() {
   list.innerHTML = jobs.map((j, i) => {
     const sc = statusClass(j.status);
     const isUrgent = j.next_action && j.next_action.toLowerCase().includes('day');
-    return '<div class="job-card status-' + sc + '" draggable="true" data-id="' + j.id + '" data-idx="' + i + '" ondragstart="dragStart(event,' + i + ')" ondragover="dragOver(event)" ondrop="dragDrop(event,' + i + ')" ondragend="dragEnd(event)">' +
+    return '<div class="job-card status-' + sc + '" draggable="true" data-id="' + j.id + '" data-idx="' + i + '" ondragstart="dragStart(event,' + i + ')" ondragover="dragOver(event)" ondrop="dragDrop(event,' + i + ')" ondragend="dragEnd(event)" onclick="handleCardClick(event,\'' + j.id + '\')">'' +
       '<div class="job-top"><div><div class="job-customer">' + (j.customer || 'Unknown') + '</div><div class="job-date">' + (j.address || '') + (j.date ? ' · ' + j.date : '') + '</div></div>' +
       '<div class="job-badges"><div class="badge badge-status-' + sc + '" onclick="cycleStatus(\'' + j.id + '\',\'' + j.status + '\')">' + (j.status || 'Lead') + '</div>' +
       (j.size ? '<div class="badge badge-size" onclick="cycleSize(\'' + j.id + '\',\'' + j.size + '\')">' + j.size + '</div>' : '<div class="badge badge-size" onclick="cycleSize(\'' + j.id + '\',\'\')">+ Size</div>') +
@@ -554,6 +564,12 @@ async function deleteJob(id) {
   jobs = jobs.filter(j => j.id !== id);
   renderJobs(); renderSummary();
   showToast('Job deleted');
+}
+
+function handleCardClick(e, id) {
+  // Don't open edit if clicking badge, trash, or phone link
+  if (e.target.closest('.badge') || e.target.closest('.btn-icon') || e.target.closest('.phone-link')) return;
+  openModal(id);
 }
 
 function dragStart(e, idx) { dragSrcIdx = idx; e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
