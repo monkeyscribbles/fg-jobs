@@ -440,7 +440,7 @@ async function parseNote() {
   const prompt = 'You are a job tracker assistant for Freedom Gutters, a gutter installation company.\n\nCurrent jobs:\n' + (jobContext || 'No jobs yet') + '\n\nUser note (timestamped ' + timestamp + '):\n"' + note + '"\n\nReturn ONLY a JSON array of actions:\n1. Match update: {"type":"match","job_id":"<id>","summary":"what changed","changes":{"status":"...","next_action":"...","size":"...","price":"...","notes":"..."}}\n2. New lead: {"type":"new_lead","summary":"description","data":{"customer":"...","address":"...","phone":"...","scope":"...","status":"Lead - New","size":"...","next_action":"..."}}\n3. Unmatched: {"type":"unmatched","summary":"could not match"}\n\nStatus values must be exactly: "Lead - New", "Soft Hold", "Sold", "Scheduled", "In Progress", "Complete - Paid"\nSize values: "Quarter Day", "Half Day", "Full Day"\nReturn ONLY the JSON array, no other text.';
 
   try {
-    const response = await fetch('/.netlify/functions/claude-proxy', {
+    const response = await fetch('/api/claude-proxy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
