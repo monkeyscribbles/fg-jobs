@@ -44,7 +44,7 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* ── HEADER ─────────────────────────── */
+/* ── HEADER ───────────────────── */
 .header {
   background: var(--s1);
   border-bottom: 1px solid var(--border);
@@ -87,7 +87,7 @@ body {
 }
 .hbtn-primary:active { filter: brightness(0.9); }
 
-/* ── TABS ───────────────────────────── */
+/* ── TABS ─────────────────────── */
 .tabs {
   display: flex; border-top: 1px solid var(--border);
 }
@@ -100,7 +100,7 @@ body {
 }
 .tab.active { color: var(--orange); border-bottom-color: var(--orange); }
 
-/* ── STATS BAR ──────────────────────── */
+/* ── STATS BAR ────────────────── */
 .stats-bar {
   background: var(--s1);
   border-bottom: 1px solid var(--border);
@@ -128,14 +128,14 @@ body {
   font-size: 16px; line-height: 1;
 }
 
-/* ── JOBS LIST ──────────────────────── */
+/* ── JOBS LIST ────────────────── */
 .jobs-list {
   padding: 12px 14px max(40px, calc(env(safe-area-inset-bottom) + 20px));
   display: flex; flex-direction: column; gap: 8px;
   max-width: 680px; margin: 0 auto;
 }
 
-/* ── JOB CARD ───────────────────────── */
+/* ── JOB CARD ─────────────────── */
 .job-card {
   background: var(--s1);
   border: 1px solid var(--border);
@@ -166,6 +166,10 @@ body {
 .card-address {
   font-size: 12px; color: var(--sub); margin-top: 2px;
   line-height: 1.3;
+}
+.card-source {
+  font-size: 10px; color: var(--muted);
+  margin-top: 1px; letter-spacing: 0.3px;
 }
 .card-right {
   display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0;
@@ -241,20 +245,19 @@ body {
 }
 .btn-del:active { border-color: #FCA5A5; color: #FCA5A5; }
 
-/* divider inside card */
 .card-divider {
   height: 1px; background: var(--border);
   margin: 9px 0;
 }
 
-/* ── EMPTY / LOADING ────────────────── */
+/* ── EMPTY / LOADING ────────────── */
 .empty { text-align: center; padding: 64px 20px; color: var(--muted); }
 .empty .icon { font-size: 36px; margin-bottom: 14px; opacity: 0.5; }
 .empty h3 { font-size: 15px; color: var(--sub); margin-bottom: 6px; }
 .empty p { font-size: 13px; }
 .loading { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
 
-/* ── UPDATES VIEW ───────────────────── */
+/* ── UPDATES VIEW ───────────────── */
 .updates-wrap {
   padding: 14px;
   max-width: 680px; margin: 0 auto;
@@ -339,7 +342,7 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── MODAL ──────────────────────────── */
+/* ── MODAL ────────────────────── */
 .overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.75);
   z-index: 200; display: flex; align-items: flex-end;
@@ -424,7 +427,7 @@ body {
   font-family: 'DM Sans', sans-serif;
 }
 
-/* ── TOAST ──────────────────────────── */
+/* ── TOAST ────────────────────── */
 .toast {
   position: fixed; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%;
   transform: translateX(-50%) translateY(80px);
@@ -443,7 +446,7 @@ body {
   .overlay { align-items: center; }
 }
 
-/* ── JOB DETAIL PANEL ───────────────── */
+/* ── JOB DETAIL PANEL ─────────────── */
 .detail-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.7);
   z-index: 150; display: flex; align-items: flex-end; justify-content: center;
@@ -487,7 +490,7 @@ body {
 }
 .detail-val.next { color: #8FAEC8; font-style: italic; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.detail-actions { display: flex; gap: 10px; padding: 0 18px max(32px, calc(env(safe-area-inset-bottom) + 16px)); margin-top: 4px; }
+.detail-actions { display: flex; gap: 10px; padding: 0 18px 10px; margin-top: 4px; }
 .btn-detail-edit {
   flex: 1; background: var(--orange); color: #fff;
   padding: 14px; border-radius: 10px; font-size: 15px;
@@ -500,12 +503,37 @@ body {
   border: 1px solid var(--border2); cursor: pointer;
   font-family: 'DM Sans', sans-serif;
 }
+
+/* ── ARCHIVE ACTIONS ──────────────── */
+.archive-row {
+  display: flex; gap: 8px;
+  padding: 0 18px max(24px, calc(env(safe-area-inset-bottom) + 8px));
+}
+.btn-archive {
+  flex: 1; background: var(--s3); color: var(--sub);
+  padding: 11px; border-radius: 9px; font-size: 13px;
+  font-weight: 600; cursor: pointer; border: 1px solid var(--border2);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-reject {
+  flex: 1; background: rgba(239,68,68,0.08); color: #FCA5A5;
+  padding: 11px; border-radius: 9px; font-size: 13px;
+  font-weight: 600; cursor: pointer; border: 1px solid rgba(239,68,68,0.2);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-restore {
+  flex: 1; background: var(--s3); color: var(--sub);
+  padding: 11px; border-radius: 9px; font-size: 13px;
+  font-weight: 600; cursor: pointer; border: 1px solid var(--border2);
+  font-family: 'DM Sans', sans-serif;
+}
+
 @media (min-width: 600px) {
   .detail-sheet { border-radius: 18px; margin-bottom: 40px; }
   .detail-overlay { align-items: center; }
 }
 
-/* ── FILTER BAR ─────────────────────── */
+/* ── FILTER BAR ─────────────────── */
 .filter-bar {
   background: var(--s1); border-bottom: 1px solid var(--border);
   padding: 8px 16px; display: flex; align-items: center; gap: 8px;
@@ -533,37 +561,52 @@ body {
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-/* ── CONFIG ───────────────────────────────────── */
+/* ── CONFIG ───────────────────────────────────────────── */
 const SUPABASE_URL = 'https://nclwjorfiqnxckvsaxau.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_ouSkRdsRBb5Wu5wACfvLtA_nYY8_VMR';
 
-const STATUSES = ['Lead - New','Soft Hold','Sold','Scheduled','In Progress','Complete','Bill','Paid'];
-const SIZES    = ['','Quarter Day','Half Day','Full Day'];
+const STATUSES = [
+  'Lead - New', 'No Answer', 'Quote Sent', 'Soft Hold',
+  'Sold', 'Scheduled', 'In Progress', 'Warranty / Callback',
+  'Complete', 'Bill', 'Paid'
+];
+// Quote Rejected is a terminal state reached via "Reject & File" — not in the tap cycle.
+
+const LEAD_SOURCES = [
+  'Website', 'Referral', 'Repeat Customer', 'Drive-By',
+  'Google', 'Facebook', 'Door Hanger', 'Angi / HomeAdvisor', 'Other'
+];
+
+const SIZES = ['', 'Quarter Day', 'Half Day', 'Full Day'];
 
 const STATUS_META = {
-  'Lead - New': { cls:'lead', color:'#3B82F6', bg:'rgba(59,130,246,0.12)', border:'rgba(59,130,246,0.28)', text:'#93C5FD' },
-  'Soft Hold':  { cls:'soft', color:'#8B5CF6', bg:'rgba(139,92,246,0.12)', border:'rgba(139,92,246,0.28)', text:'#C4B5FD' },
-  'Sold':       { cls:'sold', color:'#F59E0B', bg:'rgba(245,158,11,0.12)', border:'rgba(245,158,11,0.28)', text:'#FCD34D' },
-  'Scheduled':  { cls:'sched',color:'#06B6D4', bg:'rgba(6,182,212,0.12)',  border:'rgba(6,182,212,0.28)',  text:'#67E8F9' },
-  'In Progress':{ cls:'prog', color:'#FF5500', bg:'rgba(255,85,0,0.12)',   border:'rgba(255,85,0,0.28)',   text:'#FF9A5C' },
-  'Complete':   { cls:'done', color:'#10B981', bg:'rgba(16,185,129,0.12)', border:'rgba(16,185,129,0.28)', text:'#6EE7B7' },
-  'Bill':       { cls:'bill', color:'#F97316', bg:'rgba(249,115,22,0.12)', border:'rgba(249,115,22,0.28)', text:'#FED7AA' },
-  'Paid':       { cls:'paid', color:'#6366F1', bg:'rgba(99,102,241,0.12)', border:'rgba(99,102,241,0.28)', text:'#C7D2FE' },
+  'Lead - New':          { color:'#3B82F6', bg:'rgba(59,130,246,0.12)',   border:'rgba(59,130,246,0.28)',   text:'#93C5FD' },
+  'No Answer':           { color:'#6B7280', bg:'rgba(107,114,128,0.12)',  border:'rgba(107,114,128,0.28)',  text:'#9CA3AF' },
+  'Quote Sent':          { color:'#14B8A6', bg:'rgba(20,184,166,0.12)',   border:'rgba(20,184,166,0.28)',   text:'#5EEAD4' },
+  'Soft Hold':           { color:'#8B5CF6', bg:'rgba(139,92,246,0.12)',   border:'rgba(139,92,246,0.28)',   text:'#C4B5FD' },
+  'Sold':                { color:'#F59E0B', bg:'rgba(245,158,11,0.12)',   border:'rgba(245,158,11,0.28)',   text:'#FCD34D' },
+  'Scheduled':           { color:'#06B6D4', bg:'rgba(6,182,212,0.12)',    border:'rgba(6,182,212,0.28)',    text:'#67E8F9' },
+  'In Progress':         { color:'#FF5500', bg:'rgba(255,85,0,0.12)',     border:'rgba(255,85,0,0.28)',     text:'#FF9A5C' },
+  'Warranty / Callback': { color:'#EAB308', bg:'rgba(234,179,8,0.12)',    border:'rgba(234,179,8,0.28)',    text:'#FDE047' },
+  'Complete':            { color:'#10B981', bg:'rgba(16,185,129,0.12)',   border:'rgba(16,185,129,0.28)',   text:'#6EE7B7' },
+  'Bill':                { color:'#F97316', bg:'rgba(249,115,22,0.12)',   border:'rgba(249,115,22,0.28)',   text:'#FED7AA' },
+  'Paid':                { color:'#6366F1', bg:'rgba(99,102,241,0.12)',   border:'rgba(99,102,241,0.28)',   text:'#C7D2FE' },
+  'Quote Rejected':      { color:'#EF4444', bg:'rgba(239,68,68,0.12)',    border:'rgba(239,68,68,0.28)',    text:'#FCA5A5' },
 };
 function smeta(status) { return STATUS_META[status] || STATUS_META['Lead - New']; }
 
 const DEMO_JOBS = [
-  { id:'1', customer:'Shane Walters', address:'412 Oak Hill Dr, Mebane', phone:'919-555-0182', scope:'Full gutter replacement — 5″ K-style, approx 180 LF', price:'$1,840', size:'Full Day', status:'Scheduled', soft_hold:false, follow_up_date:'5/3', next_action:'Confirm morning arrival', position:1, date:'5/3' },
-  { id:'2', customer:'Roger Harris',  address:'88 Elm St, Graham', phone:'336-555-0441', scope:'Gutter estimate — front and rear', price:'', size:'Quarter Day', status:'Lead - New', soft_hold:false, follow_up_date:'4/30', next_action:'Call back today to schedule estimate', position:2, date:'' },
-  { id:'3', customer:'Linda Forsythe',address:'203 Birchwood Ln, Burlington', phone:'336-555-1920', scope:'Replace rotted fascia + new gutters, ~120 LF', price:'$2,200', size:'Full Day', status:'Sold', soft_hold:false, follow_up_date:'5/5', next_action:'Order materials, schedule crew', position:3, date:'5/8' },
-  { id:'4', customer:'Tom Brewer',    address:'17 Cedar Ridge, Haw River', phone:'919-555-0073', scope:'Downspout extensions ×4, clean gutters', price:'$380', size:'Quarter Day', status:'Complete', soft_hold:false, follow_up_date:'', next_action:'Send invoice', position:4, date:'4/22' },
-  { id:'5', customer:'Maria Delgado', address:'550 Pine St, Gibsonville', phone:'336-555-2210', scope:'Leaf guard install over existing gutters', price:'$650', size:'Half Day', status:'In Progress', soft_hold:false, follow_up_date:'', next_action:'', position:5, date:'4/29' },
-  { id:'6', customer:'Carl Hutchins', address:'91 Foxwood Dr, Elon', phone:'336-555-0887', scope:'New construction — 220 LF seamless 6″', price:'$2,750', size:'Full Day', status:'Soft Hold', soft_hold:true, follow_up_date:'5/1', next_action:'Waiting on builder confirmation', position:6, date:'' },
-  { id:'7', customer:'Pat Nguyen',    address:'34 Meadow View, Burlington', phone:'919-555-0354', scope:'Gutter cleaning + minor repairs', price:'$240', size:'Quarter Day', status:'Bill', soft_hold:false, follow_up_date:'', next_action:'Send invoice today', position:7, date:'4/27' },
-  { id:'8', customer:'Sandy Owens',   address:'128 Lakeview Ct, Mebane', phone:'919-555-0612', scope:'Replace 60 LF rear gutter, 6″ K-style', price:'$720', size:'Half Day', status:'Paid', soft_hold:false, follow_up_date:'', next_action:'', position:8, date:'4/20' },
+  { id:'1', customer:'Shane Walters', address:'412 Oak Hill Dr, Mebane', phone:'919-555-0182', email:'', scope:'Full gutter replacement — 5″ K-style, approx 180 LF', price:'$1,840', size:'Full Day', status:'Scheduled', soft_hold:false, follow_up_date:'5/3', next_action:'Confirm morning arrival', position:1, date:'5/3', lead_source:'Referral', archived:false },
+  { id:'2', customer:'Roger Harris',  address:'88 Elm St, Graham', phone:'336-555-0441', email:'roger@email.com', scope:'Gutter estimate — front and rear', price:'', size:'Quarter Day', status:'Lead - New', soft_hold:false, follow_up_date:'4/30', next_action:'Call back today to schedule estimate', position:2, date:'', lead_source:'Website', archived:false },
+  { id:'3', customer:'Linda Forsythe',address:'203 Birchwood Ln, Burlington', phone:'336-555-1920', email:'', scope:'Replace rotted fascia + new gutters, ~120 LF', price:'$2,200', size:'Full Day', status:'Sold', soft_hold:false, follow_up_date:'5/5', next_action:'Order materials, schedule crew', position:3, date:'5/8', lead_source:'Google', archived:false },
+  { id:'4', customer:'Tom Brewer',    address:'17 Cedar Ridge, Haw River', phone:'919-555-0073', email:'', scope:'Downspout extensions ×4, clean gutters', price:'$380', size:'Quarter Day', status:'Complete', soft_hold:false, follow_up_date:'', next_action:'Send invoice', position:4, date:'4/22', lead_source:'', archived:false },
+  { id:'5', customer:'Maria Delgado', address:'550 Pine St, Gibsonville', phone:'336-555-2210', email:'', scope:'Leaf guard install over existing gutters', price:'$650', size:'Half Day', status:'In Progress', soft_hold:false, follow_up_date:'', next_action:'', position:5, date:'4/29', lead_source:'', archived:false },
+  { id:'6', customer:'Carl Hutchins', address:'91 Foxwood Dr, Elon', phone:'336-555-0887', email:'', scope:'New construction — 220 LF seamless 6″', price:'$2,750', size:'Full Day', status:'Soft Hold', soft_hold:true, follow_up_date:'5/1', next_action:'Waiting on builder confirmation', position:6, date:'', lead_source:'Referral', archived:false },
+  { id:'7', customer:'Pat Nguyen',    address:'34 Meadow View, Burlington', phone:'919-555-0354', email:'', scope:'Gutter cleaning + minor repairs', price:'$240', size:'Quarter Day', status:'Bill', soft_hold:false, follow_up_date:'', next_action:'Send invoice today', position:7, date:'4/27', lead_source:'', archived:false },
+  { id:'8', customer:'Sandy Owens',   address:'128 Lakeview Ct, Mebane', phone:'919-555-0612', email:'', scope:'Replace 60 LF rear gutter, 6″ K-style', price:'$720', size:'Half Day', status:'Paid', soft_hold:false, follow_up_date:'', next_action:'', position:8, date:'4/20', lead_source:'Drive-By', archived:false },
 ];
 
-/* ── API ──────────────────────────────────────── */
+/* ── API ─────────────────────────────────────────────── */
 async function api(method, path, body) {
   try {
     const opts = {
@@ -582,7 +625,7 @@ async function api(method, path, body) {
   } catch(e) { throw e; }
 }
 
-/* ── TOAST ────────────────────────────────────── */
+/* ── TOAST ─────────────────────────────────────────────── */
 function showToast(msg, type='') {
   const el = document.getElementById('toast');
   el.textContent = msg;
@@ -591,10 +634,15 @@ function showToast(msg, type='') {
   el._t = setTimeout(() => el.classList.remove('show'), 2600);
 }
 
-/* ── STATUS BADGE ─────────────────────────────── */
+/* ── STATUS HELPERS ───────────────────────────────────────── */
 function shortStatus(s) {
   if (!s) return 'Lead';
-  const map = { 'Lead - New':'Lead', 'Soft Hold':'Soft Hold', 'In Progress':'In Prog', 'Complete':'Done', 'Scheduled':'Sched' };
+  const map = {
+    'Lead - New': 'Lead', 'No Answer': 'No Ans', 'Quote Sent': 'Quoted',
+    'Soft Hold': 'Soft Hold', 'In Progress': 'In Prog',
+    'Warranty / Callback': 'Warranty', 'Complete': 'Done',
+    'Scheduled': 'Sched', 'Quote Rejected': 'Rejected',
+  };
   return map[s] || s;
 }
 
@@ -611,7 +659,7 @@ function StatusBadge({ status, onClick }) {
   );
 }
 
-/* ── JOB CARD ─────────────────────────────────── */
+/* ── JOB CARD ─────────────────────────────────────────────── */
 function JobCard({ job, onEdit, onView, onDelete, onCycleStatus, onCycleSize, onDragStart, onDragOver, onDrop, onDragEnd, isDragOver, tweaks }) {
   const m = smeta(job.status);
   const isUrgent = job.next_action && /today|urgent|asap/i.test(job.next_action);
@@ -627,11 +675,11 @@ function JobCard({ job, onEdit, onView, onDelete, onCycleStatus, onCycleSize, on
     >
       <div className="card-accent" style={{ background: m.color }} />
       <div className="card-body">
-        {/* Top row */}
         <div className="card-top">
           <div style={{ flex: 1, minWidth: 0 }}>
             <div className="card-name">{job.customer || 'Unknown'}</div>
             {job.address && <div className="card-address">{job.address}{job.date ? ' · ' + job.date : ''}</div>}
+            {job.lead_source && <div className="card-source">{job.lead_source}</div>}
           </div>
           <div className="card-right">
             <StatusBadge status={job.status} onClick={() => onCycleStatus(job.id, job.status)} />
@@ -645,7 +693,6 @@ function JobCard({ job, onEdit, onView, onDelete, onCycleStatus, onCycleSize, on
           </div>
         </div>
 
-        {/* Scope */}
         {job.scope && <div className="card-scope">{job.scope}</div>}
 
         {(job.phone || job.next_action || job.follow_up_date || job.price) && (
@@ -677,16 +724,17 @@ function JobCard({ job, onEdit, onView, onDelete, onCycleStatus, onCycleSize, on
   );
 }
 
-/* ── STATS BAR ────────────────────────────────── */
+/* ── STATS BAR ─────────────────────────────────────────────── */
 function StatsBar({ jobs, filter, onFilter }) {
+  const active = jobs.filter(j => !j.archived);
   const counts = {};
   STATUSES.forEach(s => counts[s] = 0);
-  jobs.forEach(j => { if (counts[j.status] !== undefined) counts[j.status]++; });
-  const active = STATUSES.filter(s => counts[s] > 0);
-  if (!active.length) return null;
+  active.forEach(j => { if (counts[j.status] !== undefined) counts[j.status]++; });
+  const visible = STATUSES.filter(s => counts[s] > 0);
+  if (!visible.length) return null;
   return (
     <div className="stats-bar">
-      {active.map(s => {
+      {visible.map(s => {
         const m = smeta(s);
         const isActive = filter === s;
         return (
@@ -697,7 +745,7 @@ function StatsBar({ jobs, filter, onFilter }) {
             onClick={() => onFilter(filter === s ? null : s)}
           >
             <div className="dot" style={{ background: m.color }} />
-            <span className="label" style={{ color: m.text }}>{s.replace('Lead - ','').replace('In ','')}</span>
+            <span className="label" style={{ color: m.text }}>{s.replace('Lead - ','').replace('Warranty / ','')}</span>
             <span className="count" style={{ color: m.color }}>{counts[s]}</span>
           </div>
         );
@@ -706,10 +754,12 @@ function StatsBar({ jobs, filter, onFilter }) {
   );
 }
 
-function JobDetail({ job, open, onClose, onEdit, onDelete }) {
+/* ── JOB DETAIL ─────────────────────────────────────────────── */
+function JobDetail({ job, open, onClose, onEdit, onDelete, onArchive, onUnarchive }) {
   if (!job) return null;
   const m = smeta(job.status);
   const fmt = p => p ? (/^\$/.test(String(p)) ? p : '$' + p) : null;
+  const canRejectFile = ['Lead - New','No Answer','Quote Sent','Soft Hold'].includes(job.status);
   return (
     <div className={`detail-overlay${open ? ' open' : ''}`} onClick={e => e.target === e.currentTarget && onClose()}>
       <div className="detail-sheet">
@@ -722,6 +772,7 @@ function JobDetail({ job, open, onClose, onEdit, onDelete }) {
             {job.size && <div className="size-badge">{job.size}</div>}
             {job.soft_hold && <span className="soft-hold-tag">Soft Hold</span>}
             {job.confidence && <span className="size-badge">{job.confidence} confidence</span>}
+            {job.lead_source && <span className="size-badge">{job.lead_source}</span>}
           </div>
         </div>
         <div className="detail-body">
@@ -738,6 +789,12 @@ function JobDetail({ job, open, onClose, onEdit, onDelete }) {
               <div className="detail-row">
                 <div className="detail-lbl">Phone</div>
                 <div className="detail-val"><a href={`tel:${job.phone}`}>{job.phone}</a></div>
+              </div>
+            )}
+            {job.email && (
+              <div className="detail-row">
+                <div className="detail-lbl">Email</div>
+                <div className="detail-val"><a href={`mailto:${job.email}`}>{job.email}</a></div>
               </div>
             )}
             {job.date && (
@@ -776,13 +833,38 @@ function JobDetail({ job, open, onClose, onEdit, onDelete }) {
           <button className="btn-detail-del" onClick={() => { onClose(); onDelete(job.id); }}>Delete</button>
           <button className="btn-detail-edit" onClick={() => { onClose(); onEdit(job.id); }}>Edit Job</button>
         </div>
+        {!job.archived ? (
+          <div className="archive-row">
+            <button className="btn-archive" onClick={() => { onClose(); onArchive(job.id, false); }}>
+              File / Archive
+            </button>
+            {canRejectFile && (
+              <button className="btn-reject" onClick={() => { onClose(); onArchive(job.id, true); }}>
+                Reject &amp; File
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="archive-row">
+            <button className="btn-restore" onClick={() => { onClose(); onUnarchive(job.id); }}>
+              ↩ Restore to Active
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-const BLANK = { customer:'', date:'', phone:'', address:'', scope:'', price:'', size:'', status:'Lead - New', confidence:'', follow_up_date:'', next_action:'', soft_hold:false };
+/* ── BLANK FORM ─────────────────────────────────────────────── */
+const BLANK = {
+  customer:'', date:'', phone:'', email:'', address:'', scope:'',
+  price:'', size:'', status:'Lead - New', confidence:'',
+  follow_up_date:'', next_action:'', soft_hold:false,
+  lead_source:'', archived:false
+};
 
+/* ── JOB MODAL ─────────────────────────────────────────────── */
 function JobModal({ open, onClose, onSave, editJob }) {
   const [form, setForm] = useState(BLANK);
   useEffect(() => { if (open) setForm(editJob ? { ...BLANK, ...editJob } : BLANK); }, [open, editJob]);
@@ -820,6 +902,20 @@ function JobModal({ open, onClose, onSave, editJob }) {
           <input className="form-input" value={form.address} onChange={e=>set('address',e.target.value)} placeholder="123 Main St, Mebane" />
         </div>
 
+        <div className="form-row">
+          <div className="form-group">
+            <label className="field-label">Email</label>
+            <input className="form-input" value={form.email} onChange={e=>set('email',e.target.value)} placeholder="customer@email.com" type="email" />
+          </div>
+          <div className="form-group">
+            <label className="field-label">Lead Source</label>
+            <select className="form-select" value={form.lead_source} onChange={e=>set('lead_source',e.target.value)}>
+              <option value="">—</option>
+              {LEAD_SOURCES.map(s=><option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+
         <div className="form-group">
           <label className="field-label">Scope</label>
           <textarea className="form-textarea" value={form.scope} onChange={e=>set('scope',e.target.value)} placeholder="What's the job?" />
@@ -843,7 +939,7 @@ function JobModal({ open, onClose, onSave, editJob }) {
           <div className="form-group">
             <label className="field-label">Status</label>
             <select className="form-select" value={form.status} onChange={e=>set('status',e.target.value)}>
-              {STATUSES.map(s=><option key={s} value={s}>{s}</option>)}
+              {[...STATUSES, 'Quote Rejected'].map(s=><option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div className="form-group">
@@ -885,7 +981,61 @@ function JobModal({ open, onClose, onSave, editJob }) {
   );
 }
 
-/* ── UPDATES VIEW ─────────────────────────────── */
+/* ── ARCHIVE VIEW ─────────────────────────────────────────────── */
+function ArchiveView({ jobs, onRestore, onDelete }) {
+  const archived = jobs.filter(j => j.archived);
+  if (!archived.length) return (
+    <div className="empty">
+      <div className="icon">📁</div>
+      <h3>Archive is empty</h3>
+      <p>Filed and rejected jobs appear here</p>
+    </div>
+  );
+  return (
+    <div className="jobs-list">
+      {archived.map(job => {
+        const m = smeta(job.status);
+        const fmt = p => p ? (/^\$/.test(String(p)) ? p : '$' + p) : null;
+        return (
+          <div key={job.id} className="job-card" style={{ opacity: 0.75 }}>
+            <div className="card-accent" style={{ background: m.color }} />
+            <div className="card-body">
+              <div className="card-top">
+                <div style={{ flex:1, minWidth:0 }}>
+                  <div className="card-name">{job.customer || 'Unknown'}</div>
+                  {job.address && <div className="card-address">{job.address}</div>}
+                  {job.lead_source && <div className="card-source">{job.lead_source}</div>}
+                </div>
+                <div className="card-right">
+                  <div className="status-badge" style={{ background:m.bg, borderColor:m.border, color:m.text }}>
+                    {shortStatus(job.status)}
+                  </div>
+                  {job.date && <div className="size-badge">{job.date}</div>}
+                </div>
+              </div>
+              {job.scope && <div className="card-scope">{job.scope}</div>}
+              <div className="card-divider" />
+              <div style={{ display:'flex', gap:8, alignItems:'center', justifyContent:'space-between' }}>
+                <div>
+                  {job.phone && <a className="card-phone" href={'tel:'+job.phone} onClick={e=>e.stopPropagation()}>{job.phone}</a>}
+                </div>
+                <div style={{ display:'flex', gap:8, alignItems:'center' }}>
+                  {fmt(job.price) && <div className="card-price">{fmt(job.price)}</div>}
+                  <div className="btn-del" onClick={() => onDelete(job.id)}>✕</div>
+                </div>
+              </div>
+              <div style={{ marginTop:10 }}>
+                <button className="btn-restore" onClick={() => onRestore(job.id)}>↩ Restore to Active</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── UPDATES VIEW ─────────────────────────────────────────────── */
 function UpdatesView({ jobs, onJobsChange }) {
   const [note, setNote] = useState('');
   const [parsing, setParsing] = useState(false);
@@ -897,8 +1047,9 @@ function UpdatesView({ jobs, onJobsChange }) {
     const timestamp = new Date().toLocaleString('en-US',{month:'numeric',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
     setTs('Logged: ' + timestamp);
     setParsing(true); setPending([]);
-    const ctx = jobs.map(j=>`ID:${j.id} | ${j.customer} | ${j.address||''} | Status:${j.status}`).join('\n');
-    const prompt = `You are a job tracker for Freedom Gutters.\n\nCurrent jobs:\n${ctx||'None'}\n\nUser note (${timestamp}):\n"${note}"\n\nReturn ONLY a JSON array. Each item:\n{"type":"match","job_id":"<id>","summary":"what changed","changes":{"status":"...","next_action":"...","size":"...","price":"..."}}\n{"type":"new_lead","summary":"description","data":{"customer":"...","address":"...","phone":"...","scope":"...","status":"Lead - New","size":"...","next_action":"..."}}\n{"type":"unmatched","summary":"could not match"}\n\nValid status: ${STATUSES.join(', ')}\nReturn ONLY the JSON array.`;
+    const activeJobs = jobs.filter(j => !j.archived);
+    const ctx = activeJobs.map(j=>`ID:${j.id} | ${j.customer} | ${j.address||''} | Status:${j.status}`).join('\n');
+    const prompt = `You are a job tracker for Freedom Gutters.\n\nCurrent active jobs:\n${ctx||'None'}\n\nUser note (${timestamp}):\n"${note}"\n\nReturn ONLY a JSON array. Each item:\n{"type":"match","job_id":"<id>","summary":"what changed","changes":{"status":"...","next_action":"...","size":"...","price":"..."}}\n{"type":"new_lead","summary":"description","data":{"customer":"...","address":"...","phone":"...","scope":"...","status":"Lead - New","size":"...","next_action":"..."}}\n{"type":"unmatched","summary":"could not match"}\n\nValid status: ${STATUSES.join(', ')}\nReturn ONLY the JSON array.`;
     try {
       const response = await fetch('/api/claude-proxy', {
         method: 'POST',
@@ -994,7 +1145,7 @@ function UpdatesView({ jobs, onJobsChange }) {
   );
 }
 
-/* ── APP ──────────────────────────────────────── */
+/* ── APP ───────────────────────────────────────────────────── */
 function App() {
   const [jobs, setJobs] = useState(DEMO_JOBS);
   const [tab, setTab] = useState('jobs');
@@ -1010,7 +1161,6 @@ function App() {
     "showPrice": true
   }/*EDITMODE-END*/);
 
-  // Try to load from Supabase, fall back to demo
   const loadJobs = async () => {
     setLoading(true);
     try {
@@ -1055,6 +1205,20 @@ function App() {
     showToast('Deleted');
   };
 
+  const archiveJob = async (id, asRejected = false) => {
+    const updates = { archived: true };
+    if (asRejected) updates.status = 'Quote Rejected';
+    try { await api('PATCH', '/jobs?id=eq.' + id, updates); } catch(e) {}
+    setJobs(js => js.map(j => j.id === id ? {...j, ...updates} : j));
+    showToast(asRejected ? 'Rejected & filed' : 'Filed', 'success');
+  };
+
+  const unarchiveJob = async (id) => {
+    try { await api('PATCH', '/jobs?id=eq.' + id, { archived: false }); } catch(e) {}
+    setJobs(js => js.map(j => j.id === id ? {...j, archived:false} : j));
+    showToast('Restored to active', 'success');
+  };
+
   const cycleStatus = async (id, current) => {
     const next = STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length];
     try { await api('PATCH', '/jobs?id=eq.' + id, { status: next }); } catch(e) {}
@@ -1071,23 +1235,25 @@ function App() {
 
   const onDrop = async (toIdx) => {
     if (dragSrc === null || dragSrc === toIdx) { setDragOver(null); setDragSrc(null); return; }
-    const updated = [...jobs];
+    const activeJobs = jobs.filter(j => !j.archived);
+    const updated = [...activeJobs];
     const [moved] = updated.splice(dragSrc, 1);
     updated.splice(toIdx, 0, moved);
     updated.forEach((j,i) => j.position = i+1);
-    setJobs(updated);
+    setJobs([...updated, ...jobs.filter(j => j.archived)]);
     setDragSrc(null); setDragOver(null);
     try { await Promise.all(updated.map((j,i) => api('PATCH', '/jobs?id=eq.' + j.id, { position:i+1 }))); } catch(e) {}
   };
 
-  // Apply accent color from tweaks
   const accentStyle = tweaks.accentColor !== '#FF5500'
     ? { '--orange': tweaks.accentColor } : {};
   const compact = tweaks.density === 'compact';
 
+  const activeJobs = jobs.filter(j => !j.archived);
+  const filteredJobs = filter ? activeJobs.filter(j => j.status === filter) : activeJobs;
+
   return (
     <div style={accentStyle}>
-      {/* Header */}
       <header className="header">
         <div className="header-top">
           <div style={{display:'flex',alignItems:'center',gap:10}}>
@@ -1103,11 +1269,11 @@ function App() {
         </div>
         <div className="tabs">
           <button className={`tab${tab==='jobs'?' active':''}`} onClick={()=>setTab('jobs')}>JOBS</button>
+          <button className={`tab${tab==='archive'?' active':''}`} onClick={()=>setTab('archive')}>ARCHIVE</button>
           <button className={`tab${tab==='updates'?' active':''}`} onClick={()=>setTab('updates')}>UPDATES</button>
         </div>
       </header>
 
-      {/* Stats bar */}
       {tab === 'jobs' && <StatsBar jobs={jobs} filter={filter} onFilter={setFilter} />}
       {tab === 'jobs' && filter && (
         <div className="filter-bar">
@@ -1116,14 +1282,13 @@ function App() {
         </div>
       )}
 
-      {/* Jobs view */}
       {tab === 'jobs' && (
         loading
           ? <div className="loading">Loading…</div>
-          : jobs.length === 0
+          : activeJobs.length === 0
             ? <div className="empty"><div className="icon">🏠</div><h3>No jobs yet</h3><p>Tap + Add to get started</p></div>
             : <div className="jobs-list" style={compact ? { gap:5 } : {}}>
-                {(filter ? jobs.filter(j => j.status === filter) : jobs).map((job, i) => (
+                {filteredJobs.map((job, i) => (
                   <JobCard
                     key={job.id}
                     job={job}
@@ -1143,19 +1308,22 @@ function App() {
               </div>
       )}
 
-      {/* Updates view */}
+      {tab === 'archive' && (
+        <ArchiveView jobs={jobs} onRestore={unarchiveJob} onDelete={deleteJob} />
+      )}
+
       {tab === 'updates' && <UpdatesView jobs={jobs} onJobsChange={setJobs} />}
 
-      {/* Detail */}
       <JobDetail
         job={detailJob}
         open={detail.open}
         onClose={closeDetail}
         onEdit={openEdit}
         onDelete={deleteJob}
+        onArchive={archiveJob}
+        onUnarchive={unarchiveJob}
       />
 
-      {/* Modal */}
       <JobModal
         open={modal.open}
         onClose={closeModal}
@@ -1163,7 +1331,6 @@ function App() {
         editJob={editJob}
       />
 
-      {/* Tweaks */}
       <TweaksPanel>
         <TweakSection label="Brand" />
         <TweakColor label="Accent Color" value={tweaks.accentColor} onChange={v => setTweak('accentColor', v)} />
